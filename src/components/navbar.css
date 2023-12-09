@@ -1,0 +1,68 @@
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #c289c2;
+  color: #f5f0f0;
+  padding: 0.75rem 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-new {
+  padding: 0.8rem 3rem;
+  border: none;
+  background: white;
+  color: #c289c2;
+  font-weight: 900;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+.head-modal {
+  color: #c289c2;
+  margin: 1.5rem 1rem;
+  text-align: center;
+}
+
+.inp {
+  width: 85%;
+  margin: 1rem 1rem;
+  padding: 0.75rem 0.75rem;
+  border: none;
+  border-bottom: 1px solid grey;
+  font-size: 1.2rem;
+}
+
+.create-btn-contain {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-create {
+  padding: 0.8rem 6rem;
+  border: none;
+  background: #c289c2;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 2rem 0;
+}
+
+@media screen and (max-width: 600px) {
+  .btn-new {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .btn-create {
+    padding: 0.6rem 2rem;
+  }
+
+  .d-flex {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

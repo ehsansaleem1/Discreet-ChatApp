@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Raleway:wght@600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-chats {
+  width: 30%;
+  height: 32.5rem;
+  border-right: 0.8px solid #d2cbcb;
+  padding: 1rem 1rem;
+  color: #c289c2;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.section-chat {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-msg {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 5rem;
+  color: #c289c2;
+}
+
+.btn-contain {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-log {
+  padding: 1rem 6rem;
+  background: #c289c2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  margin-top: 8rem;
+  cursor: pointer;
+}
+
+.m-l {
+  margin-left: 2rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .chat-page {
+    display: none;
+  }
+  
+  .btn-log {
+    padding: 0.75rem 2rem;
+  }
+
+  .section-chat {
+    width: 100%;
+  }
+
+  div.chat-form > input {
+    width: 75%;
+  }
+  
+  .section-chats {
+    width: 100%;
+  }
+
+  .m-l {
+    margin-left: 0.75rem;
+  }
+}

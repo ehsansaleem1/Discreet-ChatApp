@@ -1,0 +1,44 @@
+.rooms-contain {
+  display: flex;
+  width: 100%;
+  border-top: 0.5px solid lightgrey;
+  border-bottom: 0.5px solid lightgrey;
+  padding: 0.8rem 0.3rem;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.rooms-contain > img {
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.rooms-contain > div > h1 {
+  margin-left: 0.5rem;
+}
+
+.rooms-contain > div > button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 1rem;
+  background: #ce3b3b;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.rooms-contain > div > button:hover {
+  background: #842e2e;
+}
+
+@media screen and (max-width: 600px) {
+  .rooms-contain > div > h1 {
+    font-size: 1.9rem;
+  }
+
+  .rooms-contain {
+    align-items: center;
+  }
+}
