@@ -33,61 +33,65 @@ export default function Navbar() {
   }
 
   async function createRoom() {
-    try {
-      const docRef = await addDoc(collection(db, "rooms"), {
-        name: name || null,
-        desc: desc || null,
-        admin: user.name,
-        uid: "id" + Math.random().toString(16).slice(2) || null,
-        roomImg: user.picture || null,
-        createdBy: user.name || null,
-        users: [{
-          name: user.name || null,
-          id: "id" + Math.random().toString(16).slice(2) || null,
-          avatar: user.picture
-        }] || null,
-        messages: [{
-          by: "Discreet Chat App",
-          text: "Welcome to discreet Chat App. You have created the room successfully. Please follow community guidelines while chatting.",
-          userAvatar: user.picture || null
-        }]
-      });
-      setName('')
-      setDesc('')
-      console.log("Document written with ID: ", docRef.id);
-      window.location.reload()
-    } catch (e) {
-      console.error("Error adding document: ", e);
+    if (name.length != 0 && desc.length != 0) {
+      try {
+        const docRef = await addDoc(collection(db, "rooms"), {
+          name: name || null,
+          desc: desc || null,
+          admin: user.name,
+          uid: "id" + Math.random().toString(16).slice(2) || null,
+          roomImg: user.picture || null,
+          createdBy: user.name || null,
+          users: [{
+            name: user.name || null,
+            id: "id" + Math.random().toString(16).slice(2) || null,
+            avatar: user.picture
+          }] || null,
+          messages: [{
+            by: "Discreet Chat App",
+            text: "Welcome to discreet Chat App. You have created the room successfully. Please follow community guidelines while chatting.",
+            userAvatar: user.picture || null
+          }]
+        });
+        setName('')
+        setDesc('')
+        console.log("Document written with ID: ", docRef.id);
+        window.location.reload()
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
     }
   }
 
   async function joinRoom() {
-    const docRef = doc(db, "rooms", id)
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      docSnap.data().users.map((thisuser) => {
-        if (thisuser.name === user.name) {
-          return "User already in chatroom!"
+    if (id.length !=0) {
+      const docRef = doc(db, "rooms", id)
+      const docSnap = await getDoc(docRef);
+  
+      if (docSnap.exists()) {
+        docSnap.data().users.map((thisuser) => {
+          if (thisuser.name === user.name) {
+            return "User already in chatroom!"
+          }
+        })
+  
+        try {
+          const documentRef = doc(db, "rooms", id);
+          await updateDoc(documentRef, {
+              users: arrayUnion({
+                name: user.name,
+                avatar: user.picture,
+                id: "id" + Math.random().toString(16).slice(2) || null,
+              })
+          });
+          window.location = `/home/id=${id}`
+        } 
+        catch (err) {
+          console.log(err)
         }
-      })
-
-      try {
-        const documentRef = doc(db, "rooms", id);
-        await updateDoc(documentRef, {
-            users: arrayUnion({
-              name: user.name,
-              avatar: user.picture,
-              id: "id" + Math.random().toString(16).slice(2) || null,
-            })
-        });
-        window.location = `/home/id=${id}`
-      } 
-      catch (err) {
-        console.log(err)
-      }
+      } else {
+        return "No Rooms Found with the entered ID"
     }
-    
   }
 
   if (isLoading) {
