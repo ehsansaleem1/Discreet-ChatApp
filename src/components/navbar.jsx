@@ -91,6 +91,7 @@ export default function Navbar() {
         }
       } else {
         return "No Rooms Found with the entered ID"
+      }
     }
   }
 
