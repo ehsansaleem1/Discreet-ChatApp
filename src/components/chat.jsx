@@ -42,18 +42,20 @@ export default function Chat(props) {
 
   async function sendMessage() {
     let id = props.id ? props.id : roomspe.id
-    try {
-      const documentRef = doc(db, "rooms", id);
-      await updateDoc(documentRef, {
-          messages: arrayUnion({
-            by: user.name,
-            text: chat,
-            avatar: user.picture,
-          })
-      });
-      setChat("")
-    } catch (err) {
-      console.log(err)
+    if (chat.length != 0) {
+      try {
+        const documentRef = doc(db, "rooms", id);
+        await updateDoc(documentRef, {
+            messages: arrayUnion({
+              by: user.name,
+              text: chat,
+              avatar: user.picture,
+            })
+        });
+        setChat("")
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
 
